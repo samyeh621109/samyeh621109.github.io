@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sam Yeh | Technical Resume</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  /* High-tech background and overall design */
+  :root {
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --primary-dark: #1d4ed8;
+    --secondary: #64748b;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --gray-light: #e2e8f0;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --tech-blue: #00a2ff;
+    --tech-cyan: #00ffff;
+    --tech-dark: #050510;
+    --tech-darker: #030308;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Microsoft JhengHei', 'SimHei', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff; /* Changed from #e5e5f0 to #ffffff for brighter text */
+    background-color: var(--tech-dark);
+    line-height: 1.5;
+    font-size: 0.9rem;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* High-tech background effect */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(0,162,255,0.07) 0%, transparent 25%),
+      radial-gradient(circle at 80% 80%, rgba(0,255,255,0.05) 0%, transparent 25%),
+      linear-gradient(90deg, rgba(0,162,255,0.03) 1px, transparent 1px),
+      linear-gradient(rgba(0,162,255,0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 50px 50px, 50px 50px;
+    z-index: -1;
+  }
+
+  /* Adding digital beam effect */
+  body::after {
+    content: "";
+    position: fixed;
+    top: -50%;
+    right: 15%;
+    width: 1px;
+    height: 200%;
+    background: linear-gradient(to bottom, transparent, rgba(0,162,255,0.1), rgba(0,162,255,0.3), rgba(0,162,255,0.1), transparent);
+    transform: rotate(-20deg);
+    z-index: -1;
+    animation: light-shift 20s infinite alternate ease-in-out;
+  }
+
+  /* Second beam of light */
+  .container::before {
+    content: "";
+    position: fixed;
+    top: -50%;
+    left: 25%;
+    width: 1px;
+    height: 200%;
+    background: linear-gradient(to bottom, transparent, rgba(0,255,255,0.1), rgba(0,255,255,0.2), rgba(0,255,255,0.1), transparent);
+    transform: rotate(15deg);
+    z-index: -1;
+    animation: light-shift 15s infinite alternate-reverse ease-in-out;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    background: rgba(5, 5, 16, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(0,162,255,0.1);
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--tech-blue);
+    padding-bottom: 15px;
+    position: relative;
+  }
+
+  /* High-tech border effect */
+  header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--tech-cyan), var(--tech-blue), transparent);
+    animation: border-glow 6s infinite alternate ease-in-out;
+  }
+
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .profile-image-container {
+    position: relative;
+    width: 130px;
+    height: 150px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(145deg, var(--tech-blue), var(--tech-cyan));
+    box-shadow: 0 0 30px rgba(0,162,255,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pulse 4s infinite alternate ease-in-out;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+  }
+
+  .profile-image-container::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.3), transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .name-title h1 {
+    font-size: 2rem;
+    color: var(--tech-cyan);
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px rgba(0,255,255,0.5);
+  }
+
+  .name-title p {
+    font-size: 1.1rem;
+    color: #d1d5db; /* Changed from #a0a0c0 to #d1d5db for better contrast */
+  }
+
+  .contact-info {
+    text-align: right;
+    font-size: 0.85rem;
+  }
+
+  .contact-info p {
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    color: #ffffff; /* Changed from default to #ffffff for brighter text */
+  }
+
+  .contact-info i {
+    color: var(--tech-blue);
+    width: 16px;
+  }
+
+  .summary {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: rgba(30, 41, 59, 0.5);
+    border-radius: 5px;
+    border-left: 3px solid var(--tech-blue);
+    box-shadow: 0 0 20px rgba(0,162,255,0.1);
+    color: #ffffff; /* Ensure summary text is bright white */
+  }
+
+  .dual-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .section {
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+    color: #ffffff; /* Changed from var(--tech-cyan) to #ffffff for maximum contrast */
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0,162,255,0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-title i {
+    color: var(--tech-blue);
+  }
+
+  /* Skill area module high-tech effect */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .skill-category {
+    margin-bottom: 5px;
+  }
+
+  .skill-category h4 {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    color: #ffffff; /* Changed from var(--tech-cyan) to #ffffff for better contrast */
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .skill-tag {
+    background-color: rgba(30, 41, 59, 0.7);
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    border: 1px solid rgba(0,162,255,0.2);
+    color: #ffffff; /* Changed to #ffffff for brighter text */
+    transition: all 0.3s ease;
+  }
+
+  .skill-tag:hover {
+    background-color: rgba(0,162,255,0.2);
+    box-shadow: 0 0 10px rgba(0,162,255,0.3);
+  }
+
+  .radar-container {
+    padding: 15px;
+    background-color: rgba(30, 41, 59, 0.5);
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0,162,255,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .radar-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at center, rgba(0,162,255,0.1) 0%, transparent 70%),
+      linear-gradient(90deg, rgba(0,162,255,0.05) 1px, transparent 1px),
+      linear-gradient(rgba(0,162,255,0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 20px 20px, 20px 20px;
+    pointer-events: none;
+    opacity: 0.5;
+    z-index: 0;
+  }
+
+  /* Timeline style improvements */
+  .timeline-section {
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 120px;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+      rgba(0,162,255,0), 
+      rgba(0,162,255,0.5),
+      rgba(0,255,255,0.5),
+      rgba(0,162,255,0.5),
+      rgba(0,162,255,0));
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 150px;
+    margin-bottom: 30px;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-year {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    text-align: right;
+    font-weight: bold;
+    color: #ffffff; /* Changed from var(--tech-cyan) to #ffffff */
+    text-shadow: 0 0 5px rgba(0,255,255,0.5);
+  }
+
+  .timeline-content {
+    position: relative;
+    padding: 15px;
+    background-color: rgba(30, 41, 59, 0.5);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,30,0.2);
+    border: 1px solid rgba(0,162,255,0.2);
+    color: #ffffff; /* Changed to #ffffff for brighter text */
+    transition: all 0.3s ease;
+  }
+
+  .timeline-content:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,162,255,0.2);
+    border-color: rgba(0,162,255,0.4);
+  }
+
+  .timeline-content::before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 15px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--tech-blue);
+    border: 3px solid var(--tech-dark);
+    box-shadow: 0 0 0 3px rgba(0,162,255,0.3), 0 0 10px rgba(0,162,255,0.5);
+    animation: pulse 3s infinite;
+  }
+
+  .timeline-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffffff; /* Changed from var(--tech-cyan) to #ffffff */
+  }
+
+  .timeline-subtitle {
+    color: #d1d5db; /* Changed from #a0a0c0 to #d1d5db for better contrast */
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  /* Education block improvements */
+  .education-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .education-item {
+    background-color: rgba(30, 41, 59, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(0,162,255,0.2);
+    color: #ffffff; /* Changed to #ffffff for brighter text */
+    transition: all 0.3s ease;
+  }
+
+  .education-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,162,255,0.2);
+    border-color: rgba(0,162,255,0.4);
+  }
+
+  .degree {
+    font-weight: bold;
+    margin-bottom: 3px;
+    color: #ffffff; /* Changed from #e5e5f0 to #ffffff */
+  }
+
+  .institution {
+    font-style: italic;
+    color: #d1d5db; /* Changed from #a0a0c0 to #d1d5db */
+    margin-bottom: 3px;
+  }
+
+  .year {
+    font-size: 0.8rem;
+    color: #d1d5db; /* Changed from #a0a0c0 to #d1d5db */
+  }
+
+  /* Tag cloud improvements */
+  .tag-cloud {
+    background-color: rgba(30, 41, 59, 0.5);
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0,162,255,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tag-cloud::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(0,162,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 3px 8px;
+    margin: 3px;
+    background-color: rgba(0,162,255,0.2);
+    color: #ffffff; /* Changed from #e5e5ff to #ffffff */
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(0,162,255,0.3);
+    transition: all 0.3s ease;
+  }
+
+  .tag:hover {
+    background-color: rgba(0,162,255,0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,162,255,0.3);
+  }
+
+  .tag-s { font-size: 0.7rem; opacity: 0.8; }
+  .tag-m { font-size: 0.8rem; }
+  .tag-l { font-size: 0.9rem; font-weight: bold; }
+  .tag-xl { font-size: 1rem; font-weight: bold; }
+
+  /* Language proficiency block improvements */
+  .languages {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .language-item {
+    background-color: rgba(30, 41, 59, 0.5);
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(0,162,255,0.2);
+    color: #ffffff; /* Changed to #ffffff for brighter text */
+    transition: all 0.3s ease;
+  }
+
+  .language-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0,162,255,0.2);
+    border-color: rgba(0,162,255,0.4);
+  }
+
+  .language-icon {
+    color: var(--tech-blue);
+    font-size: 0.9rem;
+    width: 16px;
+  }
+
+  .language-name {
+    font-weight: bold;
+  }
+
+  .language-level {
+    color: #d1d5db; /* Changed from #a0a0c0 to #d1d5db */
+  }
+
+  /* Detailed skills block improvements */
+  .expanded-skills {
+    background-color: rgba(30, 41, 59, 0.5);
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0,162,255,0.2);
+    box-shadow: 0 0 20px rgba(0,162,255,0.1);
+  }
+
+  .skills-grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 15px;
+  }
+
+  .skill-section {
+    background-color: rgba(24, 33, 47, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    border: 1px solid rgba(0,162,255,0.2);
+    color: #ffffff; /* Changed to #ffffff for brighter text */
+    transition: all 0.3s ease;
+  }
+
+  .skill-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,162,255,0.2);
+    border-color: rgba(0,162,255,0.4);
+  }
+
+  .skill-section h4 {
+    color: #ffffff; /* Changed from var(--tech-cyan) to #ffffff */
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(0,162,255,0.3);
+    padding-bottom: 3px;
+    font-size: 0.95rem;
+  }
+
+  .skill-section ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .skill-section li {
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .skill-section li::before {
+    content: "•";
+    color: var(--tech-blue);
+    font-weight: bold;
+    display: inline-block;
+    width: 15px;
+  }
+
+  /* Footer improvements */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(24, 33, 47, 0.8);
+    color: #ffffff; /* Changed from #a0a0c0 to #ffffff */
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 30px;
+    border-top: 1px solid rgba(0,162,255,0.2);
+  }
+
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,162,255,0.5), transparent);
+  }
+
+  /* Animation effects */
+  @keyframes pulse {
+    0% { opacity: 0.7; transform: scale(0.98); }
+    50% { opacity: 1; transform: scale(1.02); }
+    100% { opacity: 0.7; transform: scale(0.98); }
+  }
+
+  @keyframes border-glow {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.3; }
+  }
+
+  @keyframes light-shift {
+    0% { transform: rotate(15deg) translateX(0); }
+    100% { transform: rotate(15deg) translateX(50px); }
+  }
+
+  /* Responsive design adjustments */
+  @media print {
+    body {
+      background-color: white;
+      font-size: 0.85rem;
+      color: #000000; /* Changed to pure black for print clarity */
+    }
+    
+    body::before, body::after, .container::before {
+      display: none;
+    }
+    
+    .container {
+      padding: 0;
+      max-width: 100%;
+      background: none;
+      box-shadow: none;
+    }
+    
+    .name-title h1 {
+      color: #000000; /* Changed to black for print */
+      text-shadow: none;
+    }
+    
+    .name-title p {
+      color: #000000; /* Changed to black for print */
+    }
+    
+    .contact-info p {
+      color: #000000; /* Changed to black for print */
+    }
+    
+    .section-title, .timeline-year, .timeline-title, .skill-category h4 {
+      color: #000000; /* Changed to black for print */
+      text-shadow: none;
+    }
+    
+    .summary, .radar-container, .tag-cloud, .expanded-skills,
+    .timeline-content, .education-item, .skill-section {
+      background-color: white;
+      box-shadow: none;
+      border: 1px solid #000000; /* Changed to black border for print clarity */
+      color: #000000; /* Changed to black for print */
+    }
+    
+    .timeline::before, .timeline-content::before {
+      background-color: #000000; /* Changed to black for print */
+      box-shadow: none;
+    }
+    
+    .skill-tag, .language-item, .tag {
+      background-color: white;
+      border: 1px solid #000000; /* Changed to black border for print */
+      color: #000000; /* Changed to black for print */
+    }
+    
+    .timeline-subtitle, .institution, .year, .language-level {
+      color: #000000; /* Changed to black for print */
+    }
+    
+    .degree, .language-name {
+      color: #000000; /* Changed to black for print */
+    }
+    
+    footer {
+      background-color: white;
+      color: #000000; /* Changed to black for print */
+      border-top: 1px solid #000000; /* Changed to black for print */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .dual-column, .skills-grid, .education-grid, .skills-grid-2x2 {
+      grid-template-columns: 1fr;
+    }
+    
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .contact-info {
+      text-align: left;
+      margin-top: 10px;
+    }
+    
+    .contact-info p {
+      justify-content: flex-start;
+    }
+    
+    /* Responsive design for timeline */
+    .timeline::before {
+      left: 30px;
+    }
+    
+    .timeline-item {
+      padding-left: 60px;
+    }
+    
+    .timeline-year {
+      width: auto;
+      left: 0;
+      text-align: left;
+    }
+    
+    .timeline-content::before {
+      left: -40px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <!-- Personal Information -->
+    <header>
+      <div class="profile-header">
+        <div class="profile-image-container">
+          <img src="photo.png" alt="Sam Yeh" class="profile-image">
+        </div>
+        <div class="name-title">
+          <h1>Sam Yeh (葉松霖)</h1>
+        </div>
+      </div>
+      <div class="contact-info">
+        <p><i class="fas fa-phone"></i> +886 970 120 269</p>
+        <p><i class="fas fa-envelope"></i> samyeh621109@gmail.com</p>
+        <p><i class="fab fa-linkedin"></i> linkedin.com/in/sam-yeh</p>
+        <p><i class="fab fa-github"></i> github.com/Samyeh621109</p>
+      </div>
+    </header>
+    
+    <!-- Professional Summary -->
+    <div class="summary">
+      <p>A technology leader with 40 years of IT expertise and 26 years of cross-disciplinary management experience. Specializing in full-stack development, scalable backend solutions, DevOps, electrical engineering, legal consulting, and mechanical design. My technical journey spans from UNIX and C++ to modern containerized microservices and edge AI deployments, encompassing a full spectrum of knowledge from hardware to software development. This diverse background enables me to tackle challenges from multiple perspectives, delivering innovative and scalable business solutions while integrating 3D modeling, maker projects, and AI agents into practical applications.</p>
+    </div>
+    
+    <!-- Skills Radar and Core Skills -->
+    <div class="dual-column">
+      <!-- Skills Radar Chart -->
+      <div class="radar-container">
+        <canvas id="skills-chart" width="300" height="300"></canvas>
+      </div>
+      
+      <!-- Core Skills -->
+      <div class="section">
+        <h3 class="section-title"><i class="fas fa-star"></i> Core Skills</h3>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h4>Programming</h4>
+            <div class="skill-list">
+              <span class="skill-tag">C/C++ ★★★★★</span>
+              <span class="skill-tag">Python ★★★★☆</span>
+              <span class="skill-tag">Rust ★★★★☆</span>
+              <span class="skill-tag">PHP ★★★★☆</span>
+              <span class="skill-tag">JavaScript ★★★★☆</span>
+              <span class="skill-tag">TypeScript ★★★★☆</span>
+              <span class="skill-tag">Golang ★★★☆☆</span>
+            </div>
+          </div>
+          
+          <div class="skill-category">
+            <h4>Hardware & Embedded Systems</h4>
+            <div class="skill-list">
+              <span class="skill-tag">8051/ARM MCU ★★★★★</span>
+              <span class="skill-tag">ESP8266/ESP32 ★★★★☆</span>
+              <span class="skill-tag">Jetson Nano ★★★★☆</span>
+              <span class="skill-tag">PCB Design ★★★★☆</span>
+            </div>
+          </div>
+          
+          <div class="skill-category">
+            <h4>3D & Creative Design</h4>
+            <div class="skill-list">
+              <span class="skill-tag">3D Modeling ★★★★☆</span>
+              <span class="skill-tag">3D Printing ★★★★☆</span>
+              <span class="skill-tag">Video Editing ★★★★☆</span>
+              <span class="skill-tag">Animation ★★★☆☆</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Detailed Technical Skills -->
+    <div class="expanded-skills">
+      <h3 class="section-title"><i class="fas fa-code-branch"></i> Detailed Technical Skills</h3>
+      <div class="skills-grid-2x2">
+        <div class="skill-section">
+          <h4>Frontend Development</h4>
+          <ul>
+            <li>HTML / CSS (Responsive Design, SCSS, Bootstrap)</li>
+            <li>JavaScript / TypeScript / EJS (Template Engine)</li>
+            <li>AJAX and API Integration</li>
+            <li>Vue.js / Nuxt.js</li>
+            <li>React.js / Next.js</li>
+            <li>Flutter Mobile App Development</li>
+          </ul>
+        </div>
+        
+        <div class="skill-section">
+          <h4>Backend Development</h4>
+          <ul>
+            <li><strong>Programming Languages:</strong> Node.js / Python / Rust / Golang / PHP</li>
+            <li><strong>Frameworks:</strong> Laravel / CodeIgniter / Flask / Actix Web</li>
+            <li><strong>Architecture:</strong> RESTful APIs, Microservices</li>
+            <li><strong>Databases:</strong> PostgreSQL / MySQL / MongoDB / Redis</li>
+          </ul>
+        </div>
+        
+        <div class="skill-section">
+          <h4>DevOps & Tools</h4>
+          <ul>
+            <li>GitHub / Version Control</li>
+            <li>Kubernetes (K8s) / Docker</li>
+            <li>CI/CD Pipelines</li>
+            <li>Cloud Infrastructure Management</li>
+          </ul>
+        </div>
+        
+        <div class="skill-section">
+          <h4>Cross-disciplinary Skills</h4>
+          <ul>
+            <li>Legal Litigation and Intellectual Property Law</li>
+            <li>PCB Design and Hardware Prototyping</li>
+            <li>IoT and AI Integration</li>
+            <li>AI Agent Development and Deployment</li>
+            <li>3D Modeling and Maker Projects</li>
+            <li>Educational Content Development</li>
+            <li>Video Editing and Animation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Technical Tag Cloud -->
+    <div class="tag-cloud">
+      <div class="cloud-content">
+        <span class="tag tag-xl">C++</span>
+        <span class="tag tag-l">Python</span>
+        <span class="tag tag-l">Rust</span>
+        <span class="tag tag-l">PHP</span>
+        <span class="tag tag-l">JavaScript</span>
+        <span class="tag tag-l">TypeScript</span>
+        <span class="tag tag-m">Java</span>
+        <span class="tag tag-m">C#</span>
+        <span class="tag tag-m">React.js</span>
+        <span class="tag tag-m">Vue.js</span>
+        <span class="tag tag-m">Docker</span>
+        <span class="tag tag-xl">Embedded Systems</span>
+        <span class="tag tag-m">ESP8266</span>
+        <span class="tag tag-m">ESP32</span>
+        <span class="tag tag-l">Jetson Nano</span>
+        <span class="tag tag-m">Laravel</span>
+        <span class="tag tag-m">Flutter</span>
+        <span class="tag tag-m">Flask</span>
+        <span class="tag tag-l">Microservices</span>
+        <span class="tag tag-m">Unity</span>
+        <span class="tag tag-s">Unreal Engine</span>
+        <span class="tag tag-m">LINE LIFF</span>
+        <span class="tag tag-xl">REST API</span>
+        <span class="tag tag-m">PCB Design</span>
+        <span class="tag tag-m">MySQL</span>
+        <span class="tag tag-m">PostgreSQL</span>
+        <span class="tag tag-m">MongoDB</span>
+        <span class="tag tag-s">Redis</span>
+        <span class="tag tag-l">OCR</span>
+        <span class="tag tag-m">Tesseract</span>
+        <span class="tag tag-l">IoT</span>
+        <span class="tag tag-l">Edge AI</span>
+        <span class="tag tag-s">JWT</span>
+        <span class="tag tag-m">RBAC</span>
+        <span class="tag tag-s">ARM</span>
+        <span class="tag tag-m">8051</span>
+        <span class="tag tag-l">3D Modeling</span>
+        <span class="tag tag-m">3D Printing</span>
+        <span class="tag tag-m">Kubernetes</span>
+        <span class="tag tag-s">Legal Knowledge</span>
+        <span class="tag tag-m">PWA</span>
+        <span class="tag tag-m">Animation</span>
+        <span class="tag tag-m">Video Editing</span>
+        <span class="tag tag-m">AI Agents</span>
+        <span class="tag tag-m">Game Development</span>
+      </div>
+    </div>
+    
+    <!-- Technical Journey - Using the timeline design -->
+    <div class="timeline-section">
+      <h3 class="section-title"><i class="fas fa-history"></i> Technical Journey Milestones</h3>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1989-1992</div>
+          <div class="timeline-content">
+            <div class="timeline-title">Computer Foundations and Integration</div>
+            <div class="timeline-subtitle">UNIX, VB, ANSI C, Electromechanical Control</div>
+            <p>Participated in UNIX, VB, and ANSI C certification courses at the National Chiao Tung University Computing Center. Developed PLC automation systems for electromechanical control, establishing foundational computer skills and hardware integration expertise.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">1993-1996</div>
+          <div class="timeline-content">
+            <div class="timeline-title">Networking and Multimedia Exploration</div>
+            <div class="timeline-subtitle">DOS, BASIC, HTML, Embedded Systems</div>
+            <p>Explored DOS, BASIC, and Pascal. Engaged in hardware assembly and basic networking setup. Learned HTML for web development, explored multimedia technologies, and began developing with 8051 embedded systems. Set up early network architectures and enterprise collaboration systems.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">1997-2000</div>
+          <div class="timeline-content">
+            <div class="timeline-title">Professional Development</div>
+            <div class="timeline-subtitle">UV Control, E-commerce, Game Development</div>
+            <p>Worked on UV fiber coloring system development at Hsinchu Science Park. Developed coloring control software (C++), interactive e-books and multimedia content, B2C e-commerce websites (PHP Laravel), stock analysis platforms (Java), gaming websites (C++/Unity), contracted RPG strategy game design (Unreal Engine), and enterprise online photo processing services (C#).</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2001-2004</div>
+          <div class="timeline-content">
+            <div class="timeline-title">Campus Digitalization Leadership</div>
+            <div class="timeline-subtitle">Campus Networking, SCORM Standards, Programming Competition Coaching</div>
+            <p>Led comprehensive campus digitalization at a high school, implementing a full campus network. Introduced SCORM-compliant digital teaching materials and coached students to win programming competitions.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2005-2010</div>
+          <div class="timeline-content">
+            <div class="timeline-title">Platform Building and Internationalization</div>
+            <div class="timeline-subtitle">CodeIgniter CMS, Multilingual Systems, Cloud Migration</div>
+            <p>Built a dealer management system based on CodeIgniter, developed a multilingual translation database. Managed localization projects for Japan and Southeast Asia. Led digital transformation of office equipment, developing LINE Print, remote monitoring, and cloud maintenance systems.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2011-2016</div>
+          <div class="timeline-content">
+            <div class="timeline-title">IoT and Containerization</div>
+            <div class="timeline-subtitle">IoT Sensing, OCR Integration, Docker, Edge Devices</div>
+            <p>Designed custom IoT sensor boards and integrated Tesseract OCR into ARM edge devices. Expanded IoT applications with ESP8266. Containerized services and implemented CI workflows. Developed a multi-tier device management system with Next.js, Redis, and web telemetry, integrating device monitoring, LINE meter reading, maintenance systems, and remote control. Developed Android/iOS mobile apps.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2017-2020</div>
+          <div class="timeline-content">
+            <div class="timeline-title">Professional Diversification</div>
+            <div class="timeline-subtitle">Legal Studies, LINE LIFF Apps, Microservices Architecture</div>
+            <p>Studied law at Soochow University, focusing on cybersecurity and patent law, and integrated cryptography and authentication into products. Developed LINE LIFF apps for online-offline integration. Refactored backend systems into microservices architecture. Explored 3D modeling and printing for prototyping, and designed maker courses combining ESP32 and WebSocket for machine and sensor control.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2021-2025</div>
+          <div class="timeline-content">
+            <div class="timeline-title">AI and Emerging Technologies</div>
+            <div class="timeline-subtitle">Edge AI, PWA, Rust API, Multi-tenant Platforms</div>
+            <p>Developed PWAs with offline scanning and OCR capabilities, integrating AI models for simplified and traditional Chinese recognition and translation. Focused on computer vision and Vision Transformer models for office equipment auto-diagnosis and applications. Built secure RESTful APIs with Rust's Actix Web framework, featuring RBAC permissions, JWT authentication, and PostgreSQL-based multi-tenant CMS platforms. Integrated AI agents with IoT devices and applied advanced 3D modeling to commercial uses.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Education Background -->
+    <div class="section">
+      <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Education Background</h3>
+      <div class="education-grid">
+        <div class="education-item">
+          <div class="degree">Bachelor of Information Management</div>
+          <div class="institution">Jinwen University of Science and Technology</div>
+          <div class="year">2000-2002</div>
+        </div>
+        
+        <div class="education-item">
+          <div class="degree">Bachelor of Electrical Engineering</div>
+          <div class="institution">Ming Hsin University of Science and Technology</div>
+          <div class="year">1990-1995</div>
+        </div>
+        
+        <div class="education-item">
+          <div class="degree">Legal Studies</div>
+          <div class="institution">Soochow University School of Law</div>
+          <div class="year">2017-</div>
+        </div>
+      </div>
+      
+      <!-- Language Proficiency -->
+      <div class="section">
+        <h3 class="section-title"><i class="fas fa-language"></i> Language Proficiency</h3>
+        <div class="languages">
+          <div class="language-item">
+            <i class="fas fa-globe-asia language-icon"></i>
+            <span class="language-name">Chinese</span>
+            <span class="language-level"> - Native</span>
+          </div>
+          <div class="language-item">
+            <i class="fas fa-globe-americas language-icon"></i>
+            <span class="language-name">English</span>
+            <span class="language-level"> - Professional Working Proficiency</span>
+          </div>
+          <div class="language-item">
+            <i class="fas fa-fan language-icon"></i>
+            <span class="language-name">Japanese</span>
+            <span class="language-level"> - Reading Proficiency</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      © Sam Yeh Technical Resume | Updated: April, 2025
+    </footer>
+  </div>
+
+  <!-- Skills Radar Chart Script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('skills-chart').getContext('2d');
+
+    const data = {
+      labels: ['Programming', 'Hardware/Embedded', 'Cloud/DevOps', 'AI/OCR/NLP', 'Full-stack Development', 'Cybersecurity Law', 'Databases'],
+      datasets: [{
+        label: 'Skill Level',
+        data: [95, 90, 75, 85, 90, 70, 80],
+        backgroundColor: 'rgba(59, 130, 246, 0.3)',
+        borderColor: 'rgba(37, 99, 235, 1)',
+        pointBackgroundColor: 'rgba(37, 99, 235, 1)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgba(37, 99, 235, 1)'
+      }]
+    };
+
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        r: {
+          beginAtZero: true,
+          min: 0,
+          max: 100,
+          ticks: {
+            stepSize: 20,
+            color: '#64748b'
+          },
+          pointLabels: {
+            font: {
+              size: 12,
+              family: 'Segoe UI'
+            },
+            color: '#1e293b'
+          },
+          grid: {
+            color: 'rgba(100, 116, 139, 0.2)'
+          },
+          angleLines: {
+            color: 'rgba(100, 116, 139, 0.3)'
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    };
+
+    // Apply print-specific styles for the radar chart
+    if (window.matchMedia && window.matchMedia('print').matches) {
+      options.scales.r.ticks.color = '#000000';
+      options.scales.r.pointLabels.color = '#000000';
+      options.scales.r.grid.color = '#000000';
+      options.scales.r.angleLines.color = '#000000';
+    }
+
+    new Chart(ctx, {
+      type: 'radar',
+      data: data,
+      options: options
+    });
+  });
+</script>
+</body>
+</html>
